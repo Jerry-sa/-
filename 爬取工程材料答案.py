@@ -15,7 +15,7 @@ def start():
     global e
     e=tk.Entry(window,width=50)
     e.place(x=140,y=0)
-    b=tk.Button(window,text='search',width=15,bg='green',height=2,command=lambda : main())
+    b=tk.Button(window,text='search',width=15,bg='green',height=2,command=main)
     b.place(x=75,y=40)
     tk.mainloop()
 
@@ -45,7 +45,8 @@ def main():
     urls=(list(set(urls)))
     for ur in urls:
         html1=getHTMLText(ur)
-        if re.compile('查看.*?答案') in html1:
+        a=re.compile('查看.*?答案')
+        if a.match(html1) !=None:
             pass
         else:
             webbrowser.open(ur)
@@ -54,6 +55,4 @@ def main():
 
 
 if __name__=='__main__':   
-    #start()
-    a=re.compile('查看.*?答案')
-    print(a.match('查答案'))
+    start()
